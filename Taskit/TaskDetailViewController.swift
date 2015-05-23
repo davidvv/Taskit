@@ -16,6 +16,8 @@ class TaskDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        println(self.detailTaskModel.task)
     }
 
     override func didReceiveMemoryWarning() {

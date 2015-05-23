@@ -33,16 +33,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-    //esta funcion se llama sola cuando se pica en un segway
+    //esta funcion se llama sola cuando se pica en un segway: ella sola mete un UIStoryboardSegue dentro del parámetro segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "showTaskDetail" {
             let detailVC: TaskDetailViewController = segue.destinationViewController as! TaskDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow()
             let thisTask = taskArray[indexPath!.row]
-            detailVC.detailTaskModel = thisTask
             
+            detailVC.detailTaskModel = thisTask
         }
     }
+
     
 
     
