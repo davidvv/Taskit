@@ -19,10 +19,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let task1 = TaskModel(task: "Study french", subtask:"Verbs", date: "01/14/2014")
-        let task2 = TaskModel(task: "Eat Dinner", subtask: "Burgers", date: "01/14/2014")
+        let date1 = Date.from(year: 2014, month: 05, day: 20)
+        let date2 = Date.from(year: 2014, month: 03, day: 03)
+        let date3 = Date.from(year: 2014, month: 12, day: 13)
         
-        taskArray = [task1, task2, TaskModel(task: "Gym", subtask: "Leg day", date: "01/14/2014")]
+        let task1 = TaskModel(task: "Study french", subtask:"Verbs", date: date1)
+        let task2 = TaskModel(task: "Eat Dinner", subtask: "Burgers", date: date2)
+        
+        taskArray = [task1, task2, TaskModel(task: "Gym", subtask: "Leg day", date: date3)]
         
         self.tableView.reloadData()
         
@@ -43,8 +47,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             detailVC.detailTaskModel = thisTask
         }
+
     }
 
+    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("showTaskAdd", sender: ViewController.self)
+    }
+    
     
 
     
@@ -68,7 +77,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.taskLabel.text = thisTask.task
         cell.descriptionLabel.text = thisTask.subtask
-        cell.dateLabel.text = thisTask.date
+        cell.dateLabel.text = Date.toString(date: thisTask.date)
         
         return cell
     }
@@ -79,5 +88,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         println(indexPath.row)
         performSegueWithIdentifier("showTaskDetail", sender: self)
     }
+    
+
+    
+    
 }
 

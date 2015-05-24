@@ -21,6 +21,15 @@ class Date {
         var date = gregorianCalendar?.dateFromComponents(components)
         
     return date!
-        
     }
+
+    class func toString(#date:NSDate) -> String {
+        
+        let dateStringFormatter = NSDateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateStringFormatter.stringFromDate(date)
+        
+        return dateString
+    }
+    
 }

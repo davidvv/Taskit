@@ -24,6 +24,7 @@ class TaskDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         taskTextField.text = self.detailTaskModel.task
         subtaskTextField.text = self.detailTaskModel.subtask
+        dueDatePicker.date = self.detailTaskModel.date
 
         
     }
@@ -33,15 +34,10 @@ class TaskDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        self.navigationController!.popViewControllerAnimated(true)
     }
-    */
+
+
 
 }

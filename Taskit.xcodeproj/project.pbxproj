@@ -17,6 +17,7 @@
 		633DB6BA1B0DEDFD000229E9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633DB6B91B0DEDFD000229E9 /* TaskDetailViewController.swift */; };
 		639E2E3C1B08BF3100CFCA21 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E2E3B1B08BF3100CFCA21 /* TaskCell.swift */; };
 		63A9455B1B10D0280042B1ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A9455A1B10D0280042B1ED /* Date.swift */; };
+		63F01EC81B11E8F300B201CE /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F01EC71B11E8F300B201CE /* AddTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		633DB6B91B0DEDFD000229E9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		639E2E3B1B08BF3100CFCA21 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		63A9455A1B10D0280042B1ED /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		63F01EC71B11E8F300B201CE /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				6301F3B61B01C7BB0001B9D0 /* AppDelegate.swift */,
 				6301F3B81B01C7BB0001B9D0 /* ViewController.swift */,
 				633DB6B91B0DEDFD000229E9 /* TaskDetailViewController.swift */,
+				63F01EC71B11E8F300B201CE /* AddTaskViewController.swift */,
 				633DB6B51B0CFF0B000229E9 /* TaskModel.swift */,
 				63A9455A1B10D0280042B1ED /* Date.swift */,
 				639E2E3B1B08BF3100CFCA21 /* TaskCell.swift */,
@@ -230,6 +233,7 @@
 				633DB6B61B0CFF0B000229E9 /* TaskModel.swift in Sources */,
 				6301F3B71B01C7BB0001B9D0 /* AppDelegate.swift in Sources */,
 				633DB6BA1B0DEDFD000229E9 /* TaskDetailViewController.swift in Sources */,
+				63F01EC81B11E8F300B201CE /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
