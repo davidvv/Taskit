@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3CBBBC4A-02DE-4792-8550-9C52AA9288E2</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Taskit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1585C61A20D782432A30D29E258D4A3C2F18E22D</key>
 		<string>https://github.com/davidvv/Taskit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Taskit.xcodeproj/project.xcworkspace</string>
+	<string>Taskit.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1585C61A20D782432A30D29E258D4A3C2F18E22D</key>

@@ -29,7 +29,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         taskArray = [task1, task2, TaskModel(task: "Gym", subtask: "Leg day", date: date3)]
         
         self.tableView.reloadData()
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true) //entiendo que esta linea sobra, funciona igual sin ella
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,8 +50,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let thisTask = taskArray[indexPath!.row]
             
             detailVC.detailTaskModel = thisTask
+            detailVC.mainVC = self
         }
-
+        else if segue.identifier == "showTaskAdd" {
+            let addTaskVC:AddTaskViewController = segue.destinationViewController as! AddTaskViewController
+            addTaskVC.mainVC = self
+        }
     }
 
     @IBAction func addButtonTapped(sender: UIBarButtonItem) {
