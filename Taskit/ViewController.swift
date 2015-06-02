@@ -38,19 +38,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated) //entiendo que esta linea sobra, funciona igual sin ella
         
-        func sortByDate (taskOne:TaskModel, taskTwo:TaskModel) -> Bool {
-            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
-        }
-        taskArray = taskArray.sorted(sortByDate)
-        
-//        taskArray = taskArray.sorted{
-//            (taskOne:TaskModel, taskTwo:TaskModel) -> Bool
-//            //Comparison logic here:
-//            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
-//        }
-        
-        taskArray = taskArray.sorted{
+        baseArray[0] = baseArray[0].sorted{
             (taskOne:TaskModel, taskTwo:TaskModel) -> Bool in
+            //comparison logic here
             return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
         }
         
