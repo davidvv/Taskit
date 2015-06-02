@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  Taskit
@@ -12,8 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    var taskArray:[TaskModel] = []
-
+    var baseArray:[[TaskModel]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +23,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let date2 = Date.from(year: 2014, month: 03, day: 03)
         let date3 = Date.from(year: 2014, month: 12, day: 13)
         
-        let task1 = TaskModel(task: "Study french", subtask:"Verbs", date: date1)
-        let task2 = TaskModel(task: "Eat Dinner", subtask: "Burgers", date: date2)
+        let task1 = TaskModel(task: "Study french", subtask:"Verbs", date: date1, completed: false)
+        let task2 = TaskModel(task: "Eat Dinner", subtask: "Burgers", date: date2, completed: false)
         
-        taskArray = [task1, task2, TaskModel(task: "Gym", subtask: "Leg day", date: date3)]
+        let taskArray = [task1, task2, TaskModel(task: "Gym", subtask: "Leg day", date: date3, completed: false)]
+        
+        var completedArray = [TaskModel(task: "Code", subtask: "Task project", date: date2, completed: true)]
+        
+        baseArray = [taskArray, completedArray]
         
         self.tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true) //entiendo que esta linea sobra, funciona igual sin ella
+        super.viewDidAppear(animated) //entiendo que esta linea sobra, funciona igual sin ella
+        
+        func sortByDate (taskOne:TaskModel, taskTwo:TaskModel) -> Bool {
+            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
+        }
+        taskArray = taskArray.sorted(sortByDate)
+        
+//        taskArray = taskArray.sorted{
+//            (taskOne:TaskModel, taskTwo:TaskModel) -> Bool
+//            //Comparison logic here:
+//            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
+//        }
+        
+        taskArray = taskArray.sorted{
+            (taskOne:TaskModel, taskTwo:TaskModel) -> Bool in
+            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
+        }
+        
         self.tableView.reloadData()
     }
 
@@ -47,7 +68,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if segue.identifier == "showTaskDetail" {
             let detailVC: TaskDetailViewController = segue.destinationViewController as! TaskDetailViewController
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let thisTask = taskArray[indexPath!.row]
+            let thisTask = baseArray[indexPath!.section][indexPath!.row]
             
             detailVC.detailTaskModel = thisTask
             detailVC.mainVC = self
@@ -70,8 +91,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
         // UITableViewDataSource: estás funciones se necesitan para las UITable. La primera cuenta el número de filas de la tabla y devuelve ese número, la segunda, se llama tantas veces como filas salgan de la perimera y genera celdas.
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return baseArray.count
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.taskArray.count
+        return self.baseArray[section].count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -79,7 +104,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         println(indexPath.section)
         println(indexPath.row)
         
-        let thisTask = taskArray[indexPath.row]
+        let thisTask = baseArray[indexPath.section][indexPath.row]
         
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as! TaskCell
         
@@ -96,9 +121,4 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         println(indexPath.row)
         performSegueWithIdentifier("showTaskDetail", sender: self)
     }
-    
-
-    
-    
 }
-

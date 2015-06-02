@@ -194,7 +194,11 @@
                                 <action selector="cancelButtonTapped:" destination="vYI-2f-GX8" id="Bja-xf-ufi"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="vP0-ji-EUY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="vP0-ji-EUY">
+                            <connections>
+                                <action selector="doneBarButtonTapped:" destination="vYI-2f-GX8" id="lM1-Zc-Pgp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
