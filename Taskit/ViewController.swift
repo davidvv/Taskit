@@ -111,4 +111,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         println(indexPath.row)
         performSegueWithIdentifier("showTaskDetail", sender: self)
     }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section:Int) -> CGFloat {
+        return 25
+    }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "To do"
+        }
+        else {
+            return "Completed"
+        }
+    }
+    
+    
+    //esta función marca las acciones como completadas
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        //marca la tarea seleccionada
+        let thisTask = baseArray[indexPath.section][indexPath.row]
+        
+        if indexPath.section == 0 {
+        //crea una tarea nueva, identica a la anterior, la deja como variable
+        var newTask = TaskModel(task: thisTask.task, subtask: thisTask.subtask, date: thisTask.date, completed:true)
+
+        //añade la tarea recien generada a la lista de completadas
+            baseArray[1].append(newTask)
+        }
+        else{
+            var newTask = TaskModel(task: thisTask.task, subtask: thisTask.subtask, date: thisTask.date, completed: false)
+            //añade la tarea recién generada a la lista de no completadas para que haga el efecto de estar devolviendo la tarea anterior a no completadas
+            baseArray[0].append(newTask)
+        }
+        
+        baseArray[indexPath.section].removeAtIndex(indexPath.row)
+        tableView.reloadData()
+    }
 }
